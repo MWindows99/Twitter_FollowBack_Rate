@@ -9,10 +9,10 @@ auth = tweepy.OAuthHandler(API_KEY, API_SECRET)
 auth.set_access_token(ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
 api = tweepy.API(auth)
 
-def follow_back_calc(user_id):
+def follow_back_calc(screen_name):
     try:
-        follower = tweepy.Cursor(api.get_follower_ids, user_id=user_id, count=5000, cursor = -1).items(limit=10000)
-        following = tweepy.Cursor(api.get_friend_ids, user_id=user_id, count=5000, cursor = -1).items(limit=10000)
+        follower = tweepy.Cursor(api.get_follower_ids, screen_name=screen_name, count=5000, cursor = -1).items(limit=10000)
+        following = tweepy.Cursor(api.get_friend_ids, screen_name=screen_name, count=5000, cursor = -1).items(limit=10000)
     except:
         return False
     follower_list = []
